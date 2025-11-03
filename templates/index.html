@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Multilingual Chat</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="chat">
+    <div id="messages"></div>
+    <input id="input" placeholder="Type in any language..." />
+    <button onclick="send()">Send</button>
+  </div>
+  <script>
+    async function send() {
+      const msg = document.getElementById("input").value;
+      addMessage("You: " + msg);
+      const res = await fetch("/chat", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({message: msg})
+      });
+      const data = await res.json();
+      addMessage(data.response);
+      document.getElementById("input").value = "";
+    }
+    function addMessage(text) {
+      const div = document.createElement("div");
+      div.textContent = text;
+      document.getElementById("messages").appendChild(div);
+    }
+  </script>
+</body>
+</html>
