@@ -1,0 +1,6 @@
+{
+  "order_status": "Your order is in transit and will arrive by tomorrow.",
+  "order_delay": "We apologize for the delay. It will arrive in 2 days.",
+  "refund_status": "Refund processed. Amount will reflect in 3-5 days.",
+  "fallback": "I'm here to help! Can you please rephrase?"
+}
